@@ -81,6 +81,16 @@
 
     </RelativeLayout>
 
+    <ImageView
+        android:id="@+id/demoImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/image_platonic"
+        app:layout_constraintBottom_toBottomOf="@id/guideline_bottom"
+        app:layout_constraintLeft_toLeftOf="@id/guideline_start"
+        app:layout_constraintRight_toRightOf="@id/guideline_end"
+        app:layout_constraintTop_toTopOf="@id/guideline_top" />
+
     <Button
         android:id="@+id/choseButton"
         android:layout_width="0dp"

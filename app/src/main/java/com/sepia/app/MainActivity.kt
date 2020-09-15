@@ -114,6 +114,12 @@ class MainActivity : AppCompatActivity() {
             playerView.visibility = View.INVISIBLE
             effectsPlayerLayout.visibility = View.INVISIBLE
         }
+
+        demoImageView.visibility = if (mediaSource == null) {
+            View.VISIBLE
+        } else {
+            View.GONE
+        }
     }
 
     private fun initEffectsSurface(player: SimpleExoPlayer, context: Context): GPUPlayerView {
