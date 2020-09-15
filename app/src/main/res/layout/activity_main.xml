@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <!-- GUIDE LINES -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="@dimen/space" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="@dimen/space" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="@dimen/space" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="@dimen/space" />
+
+    <!-- CONTENT -->
+    <TextView
+        android:id="@+id/headerTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/video_maker"
+        android:textColor="@color/black"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="@id/guideline_start"
+        app:layout_constraintRight_toRightOf="@id/guideline_end"
+        app:layout_constraintTop_toTopOf="@id/guideline_top" />
+
+    <com.google.android.exoplayer2.ui.SimpleExoPlayerView
+        android:id="@+id/playerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="12dp"
+        app:layout_constraintBottom_toTopOf="@id/choseButton"
+        app:layout_constraintEnd_toEndOf="@id/guideline_end"
+        app:layout_constraintStart_toStartOf="@id/guideline_start"
+        app:layout_constraintTop_toBottomOf="@id/headerTextView"
+        app:resize_mode="fill" />
+
+    <RelativeLayout
+        android:id="@+id/gpuPlayerLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="12dp"
+        app:layout_constraintBottom_toTopOf="@id/choseButton"
+        app:layout_constraintEnd_toEndOf="@id/guideline_end"
+        app:layout_constraintStart_toStartOf="@id/guideline_start"
+        app:layout_constraintTop_toBottomOf="@id/headerTextView"
+        />
+
+    <Button
+        android:id="@+id/choseButton"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/button_height"
+        android:background="@drawable/button_background"
+        android:text="@string/choose_new_video"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@id/guideline_bottom"
+        app:layout_constraintLeft_toLeftOf="@id/guideline_start"
+        app:layout_constraintRight_toRightOf="@id/guideline_end" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

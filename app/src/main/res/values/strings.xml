@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">SepiaApp</string>
+    <string name="video_maker">Video Maker</string>
+    <string name="choose_new_video">Choose New Video</string>
+</resources>
