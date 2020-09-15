@@ -58,19 +58,28 @@
         app:layout_constraintEnd_toEndOf="@id/guideline_end"
         app:layout_constraintStart_toStartOf="@id/guideline_start"
         app:layout_constraintTop_toBottomOf="@id/headerTextView"
-        app:resize_mode="fill" />
+        app:resize_mode="fill"
+        app:shutter_background_color="@color/white" />
 
     <RelativeLayout
-        android:id="@+id/gpuPlayerLayout"
+        android:id="@+id/effectLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginBottom="12dp"
+        android:background="@color/white"
         app:layout_constraintBottom_toTopOf="@id/choseButton"
         app:layout_constraintEnd_toEndOf="@id/guideline_end"
         app:layout_constraintStart_toStartOf="@id/guideline_start"
-        app:layout_constraintTop_toBottomOf="@id/headerTextView"
-        />
+        app:layout_constraintTop_toBottomOf="@id/headerTextView">
+
+        <RelativeLayout
+            android:id="@+id/effectsPlayerLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp" />
+
+    </RelativeLayout>
 
     <Button
         android:id="@+id/choseButton"

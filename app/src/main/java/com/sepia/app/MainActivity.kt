@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.RelativeLayout
 import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.widget.ConstraintLayout
 import com.daasuu.gpuv.egl.filter.GlSepiaFilter
 import com.daasuu.gpuv.player.GPUPlayerView
 import com.daasuu.gpuv.player.PlayerScaleType
@@ -86,6 +85,7 @@ class MainActivity : AppCompatActivity() {
         player.addListener(object : Player.EventListener {
             override fun onPlayerStateChanged(playWhenReady: Boolean, playbackState: Int) {
                 if (playbackState == ExoPlayer.STATE_READY) {
+                    playerView.visibility = View.VISIBLE
                     player.videoFormat?.let {
                         var bottomMargin = 12
                         val scaleType = if (it.width > it.height) {
@@ -95,11 +95,12 @@ class MainActivity : AppCompatActivity() {
                             PlayerScaleType.RESIZE_FIT_HEIGHT
                         }
                         gpuPlayerView?.setPlayerScaleType(scaleType)
-                        val newLayout: ConstraintLayout.LayoutParams =
-                            gpuPlayerLayout.layoutParams as ConstraintLayout.LayoutParams
+                        val newLayout: RelativeLayout.LayoutParams =
+                            effectsPlayerLayout.layoutParams as RelativeLayout.LayoutParams
                         newLayout.bottomMargin = dpToPixels(bottomMargin).roundToInt()
-                        gpuPlayerLayout.layoutParams = newLayout
-                        gpuPlayerLayout.requestLayout()
+                        effectsPlayerLayout.layoutParams = newLayout
+                        effectsPlayerLayout.requestLayout()
+                        effectsPlayerLayout.visibility = View.VISIBLE
                     }
                 }
             }
@@ -110,6 +111,8 @@ class MainActivity : AppCompatActivity() {
             player.prepare(mediaSource, false, false)
             this.player = player
             this.gpuPlayerView = initEffectsSurface(player, this)
+            playerView.visibility = View.INVISIBLE
+            effectsPlayerLayout.visibility = View.INVISIBLE
         }
     }
 
@@ -118,8 +121,8 @@ class MainActivity : AppCompatActivity() {
         gpuPlayerView.setPlayerScaleType(PlayerScaleType.RESIZE_FIT_WIDTH)
         gpuPlayerView.setSimpleExoPlayer(player)
         gpuPlayerView.layoutParams = layoutParamsForEffectsSurface()
-        gpuPlayerLayout.removeAllViews()
-        gpuPlayerLayout.addView(gpuPlayerView)
+        effectsPlayerLayout.removeAllViews()
+        effectsPlayerLayout.addView(gpuPlayerView)
         gpuPlayerView.setGlFilter(GlSepiaFilter())
         gpuPlayerView.onResume()
         return gpuPlayerView
